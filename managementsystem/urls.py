@@ -3,4 +3,5 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name='jwms-home'),
+    path('inbound', views.inbound, name='inbound')
 ]
