@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
 from .forms import InboundForm
+from .models import Inbound
+from .tables import InventoryTable
 # Create your views here.
 
 def home(request):
@@ -13,8 +15,13 @@ def inbound(request):
         if form.is_valid():
             form.save()
             customer = form.cleaned_data.get('customer')
-            messages.success(request, f'Order created for {customer}!')
-            return redirect('inbound')
+            messages.success(request, f'Item entered for {customer}!')
+            return redirect('inventory')
+        
     else:
         form = InboundForm()
     return render(request, 'managementsystem/inbound.html', {'form': form})
+
+def inventory(request):
+    inventory = InventoryTable(Inbound.objects.all())
+    return render(request, 'managementsystem/inventory.html', {"inventory": inventory})

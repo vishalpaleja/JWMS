@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'managementsystem.apps.ManagementsystemConfig',
     'users.apps.UsersConfig',
     'crispy_forms',
+    'django_tables2',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -65,6 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
             ],
         },
     },
@@ -128,3 +130,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'jwms-home'
+
+DJANGO_TABLES2_TEMPLATE = "django_tables2/bootstrap4.html"
